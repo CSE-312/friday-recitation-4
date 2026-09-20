@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${LOCAL_DB_USER}
+      POSTGRES_PASSWORD: ${LOCAL_DB_PASSWORD}
+      POSTGRES_DB: ${LOCAL_DB}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${LOCAL_DB_USER}", "-d", "${LOCAL_DB}"]
+      interval: 1s
+      timeout: 5s
+      retries: 1
+      start_period: 0s
+  app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      LOCAL_DB_USER: ${LOCAL_DB_USER}
+      LOCAL_DB_PASSWORD: ${LOCAL_DB_PASSWORD}
+      LOCAL_DB: ${LOCAL_DB}
+    ports:
+      - 8080:8080
