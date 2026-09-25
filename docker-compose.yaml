@@ -5,12 +5,7 @@ services:
       POSTGRES_USER: ${LOCAL_DB_USER}
       POSTGRES_PASSWORD: ${LOCAL_DB_PASSWORD}
       POSTGRES_DB: ${LOCAL_DB}
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${LOCAL_DB_USER}", "-d", "${LOCAL_DB}"]
-      interval: 1s
-      timeout: 5s
-      retries: 1
-      start_period: 0s
+
   app:
     build: .
     depends_on:

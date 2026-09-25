@@ -16,7 +16,7 @@ import (
 
 func insert_data(data string, connection net.Conn) {
 	_, err := db.Exec(`
-		ADD INTO greetings (message)
+		INSERT INTO greetings (message)
 		VALUES ($1)
 		`, data)
 
@@ -36,7 +36,7 @@ func insert_data(data string, connection net.Conn) {
 }
 
 func get_data(connection net.Conn) {
-	records, err := db.Query("SELECT  FROM greetings")
+	records, err := db.Query("SELECT * FROM greetings")
 	if err != nil {
 		message := fmt.Sprintf("query failed: %v", err)
 		handle_response(message, connection) // Send a response using the "net/http" package. Do not Touch!!

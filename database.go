@@ -36,7 +36,7 @@ func InitDatabase() {
 	db = local_db
 
 	_, err2 := db.Exec(`
-	CREATE TABLE IF EXISTS greetings (
+	CREATE TABLE greetings (
 		id SERIAL PRIMARY KEY,
     	message TEXT NOT NULL)
 	`)

@@ -6,12 +6,12 @@
 
 ## Activity Overview
 
-| Item | Details |
-| --- | --- |
+| Item | Details                                                         |
+| --- |-----------------------------------------------------------------|
 | Topic | Go server, Docker Compose, PostgreSQL, and environment variables |
 | Goal | Find and fix the bugs preventing the app from running correctly |
-| Bug count | 8 total bugs |
-| Submission | Upload a `.zip` file to Autolab |
+| Bug count | 5 total bugs                                                    |
+| Submission | Upload a `.zip` file to Autolab                                 |
 
 You may use recitation slides, your notes, previous examples, and Jesse's slides while completing this activity.
 
@@ -19,7 +19,7 @@ You may use recitation slides, your notes, previous examples, and Jesse's slides
 
 ## Files to Inspect
 
-The 8 bugs are located across the following files:
+The 5 bugs are located across the following files:
 
 | File | Purpose |
 | --- | --- |
@@ -41,6 +41,13 @@ Then initialize the Go module and install the required dependencies:
 go mod init RecActivity4
 go mod tidy
 ```
+
+---
+
+## Hints
+
+- For some reason, every time the server starts, the database gets deleted.
+- There is a very important bug in docker-compose.yaml that was discussed in last week's recitation
 
 ---
 
